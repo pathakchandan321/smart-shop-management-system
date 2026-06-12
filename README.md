@@ -186,3 +186,210 @@ ENTRYPOINT ["java","-jar","/app.jar"]
 ## License
 
 MIT – Educational and commercial use permitted.
+
+
+# AI-Powered Smart Retail Management System
+
+## Overview
+
+AI-Powered Smart Retail Management System is an intelligent retail solution designed to help shop owners manage their inventory, billing, product placement, and sales analytics efficiently. The system uses Artificial Intelligence and Data Science techniques to provide smart recommendations for store layout optimization, demand forecasting, and inventory management.
+
+This project combines Spring Boot, MySQL, Machine Learning, and Data Analytics to create a next-generation retail management platform.
+
+---
+
+## Problem Statement
+
+Most shop owners arrange products based on personal experience rather than data-driven insights. Poor product placement, inefficient inventory management, and lack of sales analysis can reduce profitability.
+
+This system aims to solve these problems by providing AI-powered recommendations and analytics.
+
+---
+
+## Key Features
+
+### Authentication & Security
+
+* User Registration and Login
+* JWT Authentication
+* Role-Based Access Control
+
+### Shop Management
+
+* Shop Registration
+* Store Layout Configuration
+* Shop Dimension Management
+
+### Product Management
+
+* Add, Update, Delete Products
+* Product Categorization
+* Shelf Location Management
+
+### Inventory Management
+
+* Real-Time Stock Tracking
+* Low Stock Alerts
+* Inventory Monitoring
+
+### Billing System (POS)
+
+* Product Billing
+* Invoice Generation
+* Sales Record Management
+* Transaction History
+
+### Analytics Dashboard
+
+* Daily Sales Reports
+* Monthly Sales Reports
+* Product Performance Analysis
+* Revenue Tracking
+
+### AI-Powered Features
+
+#### Smart Product Placement
+
+Suggests optimal product locations based on sales behavior and customer purchasing patterns.
+
+#### Market Basket Analysis
+
+Identifies products frequently purchased together and recommends shelf arrangements.
+
+#### Demand Forecasting
+
+Predicts future product demand using historical sales data.
+
+#### Dead Stock Detection
+
+Detects slow-moving products and suggests promotional actions.
+
+#### Store Layout Optimization
+
+Recommends ideal product positioning based on store dimensions and product categories.
+
+#### AI Recommendations
+
+Provides actionable insights to improve sales and customer experience.
+
+---
+
+## Technology Stack
+
+### Backend
+
+* Java
+* Spring Boot
+* Spring Security
+* JWT Authentication
+* Hibernate/JPA
+
+### Database
+
+* MySQL
+
+### AI & Data Science
+
+* Python
+* Pandas
+* NumPy
+* Scikit-Learn
+
+### Frontend (Planned)
+
+* React.js
+
+### Tools
+
+* Git
+* GitHub
+* Postman
+* Maven
+
+---
+
+## System Architecture
+
+Frontend (React)
+
+↓
+
+Spring Boot REST APIs
+
+↓
+
+MySQL Database
+
+↓
+
+AI Engine (Python)
+
+↓
+
+Analytics & Recommendations
+
+---
+
+## Future Enhancements
+
+* Automatic Store Layout Visualization
+* QR Code Billing
+* Supplier Recommendation System
+* Multi-Shop Management
+* Customer Purchase Analysis
+* AI-Based Dynamic Pricing
+* Mobile Application Support
+
+---
+
+## Project Goals
+
+* Improve product visibility
+* Increase sales through intelligent placement
+* Reduce inventory waste
+* Automate retail decision-making
+* Provide data-driven business insights
+
+---
+
+## Learning Objectives
+
+Through this project, the following concepts will be explored:
+
+* Spring Boot Development
+* REST API Design
+* Database Design
+* Authentication & Authorization
+* Machine Learning Integration
+* Demand Forecasting
+* Recommendation Systems
+* Retail Analytics
+* System Design
+
+---
+
+## Project Status
+
+🚧 Currently Under Development
+
+Phase 1: Backend Foundation & Authentication
+
+Planned Modules:
+
+* User Management
+* Shop Management
+* Product Management
+* Inventory Management
+* Billing System
+* Analytics Dashboard
+* AI Recommendation Engine
+
+---
+
+## Author
+
+Chandan Pathak
+
+B.Tech (Data Science)
+
+Passionate about Artificial Intelligence, Data Science, Java, and System Design.
