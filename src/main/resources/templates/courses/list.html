@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:replace="~{layouts/main :: layout(~{::section})}">
+<section>
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <h6>Courses</h6>
+            <div class="row g-3 mb-3" th:each="c : ${courses}">
+                <div class="col-12"><div class="glass-panel p-3"><strong th:text="${c.courseName}"></strong>
+                    <span class="text-muted" th:text="' (' + ${c.courseCode} + ')'"></span></div></div>
+            </div>
+            <form sec:authorize="hasRole('ADMIN')" th:action="@{/courses}" method="post" class="glass-panel p-3">
+                <h6>Add Course</h6>
+                <input name="courseCode" class="form-control mb-2" placeholder="Code" required/>
+                <input name="courseName" class="form-control mb-2" placeholder="Name" required/>
+                <input name="department" class="form-control mb-2" placeholder="Department"/>
+                <button type="submit" class="btn btn-primary btn-sm">Add</button>
+            </form>
+        </div>
+        <div class="col-lg-6">
+            <h6>Subjects</h6>
+            <div class="table-glass mb-3">
+                <table class="table mb-0"><thead><tr><th>Code</th><th>Name</th><th>Course</th></tr></thead>
+                <tbody><tr th:each="s : ${subjects}"><td th:text="${s.subjectCode}"></td><td th:text="${s.subjectName}"></td><td th:text="${s.course?.courseName}"></td></tr></tbody>
+                </table>
+            </div>
+            <form sec:authorize="hasRole('ADMIN')" th:action="@{/courses/subjects}" method="post" class="glass-panel p-3">
+                <h6>Add Subject</h6>
+                <input name="subjectCode" class="form-control mb-2" placeholder="Code" required/>
+                <input name="subjectName" class="form-control mb-2" placeholder="Name" required/>
+                <select name="course.id" class="form-select mb-2"><option th:each="c : ${courses}" th:value="${c.id}" th:text="${c.courseName}"></option></select>
+                <button type="submit" class="btn btn-primary btn-sm">Add</button>
+            </form>
+        </div>
+    </div>
+</section>
+</html>

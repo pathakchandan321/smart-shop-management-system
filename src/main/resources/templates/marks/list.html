@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/main :: layout(~{::section})}">
+<section>
+    <div class="glass-panel p-4 mb-4">
+        <h6>Add Marks</h6>
+        <form th:action="@{/marks}" method="post" class="row g-2">
+            <div class="col-md-2">
+                <select name="studentId" class="form-select" required>
+                    <option value="">Student</option>
+                    <option th:each="s : ${students}" th:value="${s.id}" th:text="${s.firstName + ' ' + s.lastName + ' (' + s.studentId + ')'}"></option>
+                </select>
+            </div>
+            <div class="col-md-2"><select name="subjectId" class="form-select"><option th:each="s : ${subjects}" th:value="${s.id}" th:text="${s.subjectName}"></option></select></div>
+            <div class="col-md-2"><select name="examType" class="form-select"><option th:each="e : ${examTypes}" th:value="${e}" th:text="${e}"></option></select></div>
+            <div class="col-md-2"><input name="marksObtained" type="number" step="0.01" class="form-control" placeholder="Marks" required/></div>
+            <div class="col-md-2"><input name="maxMarks" type="number" value="100" class="form-control" placeholder="Max"/></div>
+            <div class="col-md-2"><button type="submit" class="btn btn-primary w-100">Add</button></div>
+        </form>
+    </div>
+    <div class="table-glass">
+        <table class="table mb-0"><thead><tr><th>Student</th><th>Subject</th><th>Exam</th><th>Marks</th><th>Grade</th></tr></thead>
+        <tbody><tr th:each="m : ${marks.content}">
+            <td th:text="${m.student.firstName + ' ' + m.student.lastName}"></td>
+            <td th:text="${m.subject.subjectName}"></td>
+            <td th:text="${m.examType}"></td>
+            <td th:text="${m.marksObtained + '/' + m.maxMarks}"></td>
+            <td th:text="${m.grade}"></td>
+        </tr></tbody></table>
+    </div>
+</section>
+</html>

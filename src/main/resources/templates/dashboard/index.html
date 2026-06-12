@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/main :: layout(~{::section})}">
+<section>
+    <div class="row g-4 mb-4">
+        <div class="col-6 col-md-4 col-xl">
+            <div class="stat-card glass-panel">
+                <div class="text-muted small">Students</div>
+                <div class="stat-value" th:text="${stats.totalStudents}">0</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-xl">
+            <div class="stat-card glass-panel">
+                <div class="text-muted small">Teachers</div>
+                <div class="stat-value" th:text="${stats.totalTeachers}">0</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-xl">
+            <div class="stat-card glass-panel">
+                <div class="text-muted small">Courses</div>
+                <div class="stat-value" th:text="${stats.totalCourses}">0</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-xl">
+            <div class="stat-card glass-panel">
+                <div class="text-muted small">Subjects</div>
+                <div class="stat-value" th:text="${stats.totalSubjects}">0</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-xl">
+            <div class="stat-card glass-panel">
+                <div class="text-muted small">Attendance Today</div>
+                <div class="stat-value"><span th:text="${#numbers.formatDecimal(stats.attendanceRateToday, 0, 0)}">0</span>%</div>
+            </div>
+        </div>
+    </div>
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="glass-panel p-4">
+                <h6 class="mb-3">Students by Course</h6>
+                <canvas id="courseChart" height="120"></canvas>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="glass-panel p-4">
+                <h6 class="mb-3">Recent Students</h6>
+                <ul class="list-group list-group-flush">
+                    <li th:each="s : ${stats.recentStudents}" class="list-group-item bg-transparent d-flex justify-content-between">
+                        <span th:text="${s.name}">Name</span>
+                        <small class="text-muted" th:text="${s.course}">Course</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script th:inline="javascript">
+        const courseData = /*[[${stats.courseDistribution}]]*/ [];
+        if (courseData && courseData.length && typeof Chart !== 'undefined') {
+            new Chart(document.getElementById('courseChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: courseData.map(c => c.courseName),
+                    datasets: [{ data: courseData.map(c => c.count), backgroundColor: ['#4f46e5','#8b5cf6','#ec4899','#f59e0b'] }]
+                },
+                options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+            });
+        }
+    </script>
+</section>
+</html>
